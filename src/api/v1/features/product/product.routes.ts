@@ -5,7 +5,7 @@ import {
   editProductHandler,
   getProductsHandler,
   getSingleProductHandler,
-} from './product.controllers'
+} from './index'
 
 const router = express.Router()
 

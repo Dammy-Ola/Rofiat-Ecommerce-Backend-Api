@@ -1,13 +1,14 @@
 import { NextFunction, Request, Response } from 'express'
-import slugifyName from '../../utils/slugify'
-import IProduct, { IBaseProduct } from './product.interfaces'
+import { slugifyName } from '../../utils'
 import {
+  IProduct,
+  IBaseProduct,
   addProduct,
-  deleteProduct,
   editProduct,
+  deleteProduct,
   getProducts,
   getSingleProductBySlugName,
-} from './product.services'
+} from './index'
 
 export const getProductsHandler = async (
   req: Request,
