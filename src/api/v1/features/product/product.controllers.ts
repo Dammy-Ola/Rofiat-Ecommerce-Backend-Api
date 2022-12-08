@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import slugifyName from '../../utils/slugify'
 import IProduct, { IBaseProduct } from './product.interfaces'
 import {
   addProduct,
@@ -42,6 +43,11 @@ export const addProductHandler = async (
   next: NextFunction
 ) => {
   try {
+    const { name } = req.body
+
+    // Slugify the product name
+    req.body.slug = await slugifyName(name)
+
     const product = await addProduct(req.body)
 
     res.status(201).json({ success: true, product })
