@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import { generateOrderNumber } from '../../utils'
 import {
   IOrder,
   IBaseOrder,
@@ -43,9 +44,11 @@ export const makeOrderHandler = async (
   next: NextFunction
 ) => {
   try {
-    const Order = await makeOrder(req.body)
+    req.body.orderNumber = await generateOrderNumber()
 
-    res.status(201).json({ success: true, Order })
+    const order = await makeOrder(req.body)
+
+    res.status(201).json({ success: true, order })
   } catch (error) {
     res.status(500).json({ error })
   }

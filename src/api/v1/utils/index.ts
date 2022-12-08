@@ -1,3 +1,4 @@
+import generateOrderNumber from './generateOrderNumber'
 import slugifyName from './slugify'
 
-export { slugifyName }
+export { generateOrderNumber, slugifyName }
