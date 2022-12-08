@@ -6,6 +6,7 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import connectDB from './api/v1/config/db'
+import routes from './api/v1/routes'
 
 dotenv.config()
 
@@ -33,6 +34,7 @@ const corsOptions = {
 app.use(helmet())
 app.use(cors(corsOptions))
 app.use(express.json())
+app.use(routes)
 
 /**
  * Server Activation
