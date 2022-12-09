@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { slugifyName } from '../../utils'
+import { slugifyName, uploadImageToCloudinary } from '../../utils'
 import {
   IProduct,
   IBaseProduct,
@@ -16,9 +16,12 @@ export const getProductsHandler = async (
   next: NextFunction
 ) => {
   try {
+    const image = await uploadImageToCloudinary()
     const products = await getProducts()
 
-    res.status(200).json({ success: true, count: products.length, products })
+    res
+      .status(200)
+      .json({ success: true, count: products.length, products, image })
   } catch (error) {
     res.status(500).json({ error })
   }
