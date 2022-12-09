@@ -1,5 +1,4 @@
-import Product from './Product'
-import IProduct, { IBaseProduct } from './product.interfaces'
+import { Product, IProduct, IBaseProduct } from './index'
 
 export const getProducts = () => {
   return Product.find()
