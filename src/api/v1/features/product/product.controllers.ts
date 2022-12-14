@@ -16,12 +16,10 @@ export const getProductsHandler = async (
   next: NextFunction
 ) => {
   try {
-    const image = await uploadImageToCloudinary()
+    // const image = await uploadImageToCloudinary()
     const products = await getProducts()
 
-    res
-      .status(200)
-      .json({ success: true, count: products.length, products, image })
+    res.status(200).json({ success: true, count: products.length, products })
   } catch (error) {
     res.status(500).json({ error })
   }
@@ -35,7 +33,7 @@ export const getSingleProductHandler = async (
   try {
     const product = await getSingleProductBySlugName(req.params.slug)
 
-    res.status(200).json({ success: true, product })
+    res.status(200).json({ success: true, product: product[0] })
   } catch (error) {
     res.status(500).json({ error })
   }

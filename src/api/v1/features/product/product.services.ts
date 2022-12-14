@@ -8,10 +8,8 @@ export const getSingleProductById = (productId: IProduct['_id']) => {
   return Product.findById(productId)
 }
 
-export const getSingleProductBySlugName = (
-  productSlug: IBaseProduct['slug']
-) => {
-  return Product.findById(productSlug)
+export const getSingleProductBySlugName = (slug: IBaseProduct['slug']) => {
+  return Product.find({ slug })
 }
 
 export const addProduct = (product: IBaseProduct) => {
